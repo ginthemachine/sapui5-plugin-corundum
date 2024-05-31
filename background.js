@@ -18,7 +18,6 @@ chrome.action.onClicked.addListener(async (tab) => {
     });
 
     if (nextState === 'ON') {
-        console.log('starting plugin...');
         chrome.tabs.sendMessage(
             tab.id,
             { action: 'start_plugin' },
@@ -27,12 +26,18 @@ chrome.action.onClicked.addListener(async (tab) => {
             }
         );
     } else if (nextState === 'OFF') {
-        console.log('stopping plugin...');
         chrome.tabs.sendMessage(
             tab.id,
             { action: 'stop_plugin' },
-            function (response) {
-                console.log(response);
+            async function ({ message, state }) {
+                console.log(message);
+                
+                if (state === 'ON') {
+                    await chrome.action.setBadgeText({
+                        tabId: tab.id,
+                        text: state,
+                    });
+                }
             }
         );
     }
