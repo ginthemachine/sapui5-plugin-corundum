@@ -1,0 +1,36 @@
+.what-the-sap-popover {
+    color: #333333 !important;
+    top: 10px;
+    left: 10px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    min-height: auto;
+    min-width: 240px;
+    z-index: 9999;
+    position: absolute;
+    box-shadow: 0px 4px 4px 0px #3333332e;
+    font-size: 14px !important;
+    cursor: move;
+    user-select: none;
+}
+
+.what-the-sap-popover table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.what-the-sap-popover thead th {
+    text-align: left;
+    font-size: 10px;
+    background-color: #04aa6d;
+    color: #ffffff;
+}
+
+.what-the-sap-popover th,
+.what-the-sap-popover td {
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

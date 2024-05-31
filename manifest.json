@@ -13,6 +13,7 @@
     "content_scripts": [
         {
             "js": ["content.js"],
+            "css": ["what-the-sap.css"],
             "matches": [
                 "<all_urls>"
             ]
@@ -21,7 +22,7 @@
     "web_accessible_resources": [
         {
             "resources": [
-                "my-script.js"
+                "what-the-sap.js"
             ],
             "matches": [
                 "<all_urls>"
