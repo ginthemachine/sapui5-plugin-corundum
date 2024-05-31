@@ -41,13 +41,27 @@
             // update the screen
             bubbleDOM.innerHTML = content;
 
-            const rect = el.getDomRef().getBoundingClientRect();
-            const x = e.clientX - rect.left; //x position within the element.
-            const y = e.clientY - rect.top;  //y position within the element.
+            // const rect = el.getDomRef().getBoundingClientRect();
+            // const x = e.clientX - rect.left; //x position within the element.
+            // const y = e.clientY - rect.top;  //y position within the element.
 
-            // TODO: fix this
-            bubbleDOM.style.top = y + 'px';
-            bubbleDOM.style.left = x + 'px';
+            // // TODO: fix this
+            // bubbleDOM.style.top = y + 'px';
+            // bubbleDOM.style.left = x + 'px';
+
+            // Append index on items of "Select / Combo Box" control.
+            // 1. Check State
+            if (
+                el.getMetadata().getName() !== "sap.m.Select"
+                || el.getDomRef().closest("[id$='ElementPropertyDialog']") === null
+                || el.getSelectedItem().getText().includes("].")
+                || !el.getEnabled()
+            ) return;
+            
+            // 2. Append Sequence number
+            el.getAggregation("items").forEach((item, idx) => {
+                item.setText(`${item.getText()} - [${idx}].`);
+            });
         }
     });
 })();
